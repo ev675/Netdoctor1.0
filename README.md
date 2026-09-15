@@ -2,15 +2,15 @@
 
 
 
-\# 🩺 NetDoctor
+ NetDoctor
 
 
 
-\### Intelligent Internet Fault Diagnosis \& Root-Cause Analysis Platform
+ Intelligent Internet Fault Diagnosis \& Root-Cause Analysis Platform
 
 
 
-\*\*Find WHERE the Internet Problem Starts — Not Just How Fast It Is\*\*
+Find WHERE the Internet Problem Starts — Not Just How Fast It Is
 
 
 
@@ -42,11 +42,11 @@
 
 
 
-\## 📌 Project Overview
+Project Overview
 
 
 
-\*\*NetDoctor\*\* is an intelligent network diagnosis and root-cause analysis platform designed to identify \*\*where an Internet connection is failing\*\*.
+NetDoctor is an intelligent network diagnosis and root-cause analysis platform designed to identify where an Internet connection is failing.
 
 
 
@@ -62,7 +62,7 @@ NetDoctor focuses on a different question:
 
 
 
-> \*\*"Why is my Internet connection degraded, and where does the problem start?"\*\*
+> "Why is my Internet connection degraded, and where does the problem start?
 
 
 
@@ -94,7 +94,7 @@ These measurements are correlated with historical baselines and diagnostic rules
 
 
 
-\# 🎯 Problem Statement
+ Problem Statement
 
 
 
@@ -150,75 +150,69 @@ NetDoctor attempts to bridge this gap by correlating multiple network measuremen
 
 
 
-\# 💡 Core Idea
+Core Idea
 
 
 
 ```text
 
-&#x20;                   INTERNET PROBLEM
+                INTERNET PROBLEM
+                          │
 
-&#x20;                          │
+                         ▼
 
-&#x20;                          ▼
+             ┌─────────────────────┐
 
-&#x20;               ┌─────────────────────┐
+            │    NetDoctor Agent  │
 
-&#x20;               │    NetDoctor Agent  │
+              └──────────┬──────────┘
+                      │
 
-&#x20;               └──────────┬──────────┘
+          ┌─────────────┼─────────────┐
 
-&#x20;                          │
+           │             │             │
 
-&#x20;            ┌─────────────┼─────────────┐
+            ▼             ▼             ▼
 
-&#x20;            │             │             │
+        Gateway         DNS        Traceroute
 
-&#x20;            ▼             ▼             ▼
+           │             │             │
 
-&#x20;         Gateway         DNS        Traceroute
+            └─────────────┼─────────────┘
+                          │
 
-&#x20;            │             │             │
+                        ▼
+                  FastAPI Backend
 
-&#x20;            └─────────────┼─────────────┘
+                        │
 
-&#x20;                          │
+                         ▼
 
-&#x20;                          ▼
+                 Measurement Storage
 
-&#x20;                   FastAPI Backend
+                          │
 
-&#x20;                          │
+          ┌─────────────┴─────────────┐
 
-&#x20;                          ▼
+           │                           │
 
-&#x20;                 Measurement Storage
+           ▼                           ▼
 
-&#x20;                          │
+     Rule-Based Engine            ML Analysis
 
-&#x20;            ┌─────────────┴─────────────┐
+          │                           │
 
-&#x20;            │                           │
+          └─────────────┬─────────────┘
 
-&#x20;            ▼                           ▼
+                         │
+                      ▼
 
-&#x20;      Rule-Based Engine            ML Analysis
+                Root Cause Analysis
 
-&#x20;            │                           │
+                         │
+                          ▼
 
-&#x20;            └─────────────┬─────────────┘
-
-&#x20;                          │
-
-&#x20;                          ▼
-
-&#x20;                  Root Cause Analysis
-
-&#x20;                          │
-
-&#x20;                          ▼
-
-&#x20;                Human-Readable Diagnosis
+               Human-Readable Diagnosis
 
 ```
 
@@ -228,7 +222,7 @@ NetDoctor attempts to bridge this gap by correlating multiple network measuremen
 
 
 
-\# 🏗️ System Architecture
+\ System Architecture
 
 
 
@@ -237,94 +231,93 @@ NetDoctor attempts to bridge this gap by correlating multiple network measuremen
 flowchart TB
 
 
-
-&#x20;   USER\["👤 User"]
-
-
-
-&#x20;   DASH\["🖥️ Web Dashboard<br/>Next.js + TypeScript"]
+  USER\["👤 User"]
 
 
 
-&#x20;   AGENT\["🐍 Local Diagnostic Agent<br/>Python"]
+  DASH\["🖥️ Web Dashboard<br/>Next.js + TypeScript"]
 
 
 
-&#x20;   DEVICE\["💻 Device Tests"]
-
-&#x20;   GATEWAY\["📡 Gateway / Router Tests"]
-
-&#x20;   DNS\["🌐 DNS Tests"]
-
-&#x20;   PING\["📶 Ping / Latency"]
-
-&#x20;   TRACE\["🛣️ Traceroute"]
-
-&#x20;   HTTP\["🔗 HTTP / HTTPS Tests"]
+  AGENT\["🐍 Local Diagnostic Agent<br/>Python"]
 
 
 
-&#x20;   API\["⚡ FastAPI Backend"]
+   DEVICE\["💻 Device Tests"]
+
+  GATEWAY\["📡 Gateway / Router Tests"]
+
+  DNS\["🌐 DNS Tests"]
+
+   PING\["📶 Ping / Latency"]
+
+   TRACE\["🛣️ Traceroute"]
+
+   HTTP\["🔗 HTTP / HTTPS Tests"]
 
 
 
-&#x20;   DB\[("🗄️ PostgreSQL")]
+   API\["⚡ FastAPI Backend"]
 
 
 
-&#x20;   RULE\["🧠 Rule-Based Diagnosis"]
-
-&#x20;   ML\["🤖 ML / Anomaly Detection"]
+   DB\[("🗄️ PostgreSQL")]
 
 
 
-&#x20;   REPORT\["📄 Diagnostic Report"]
+   RULE\["🧠 Rule-Based Diagnosis"]
+
+  ML\["🤖 ML / Anomaly Detection"]
 
 
 
-&#x20;   USER --> DASH
-
-&#x20;   DASH --> API
+   REPORT\["📄 Diagnostic Report"]
 
 
 
-&#x20;   AGENT --> DEVICE
+  USER --> DASH
 
-&#x20;   AGENT --> GATEWAY
-
-&#x20;   AGENT --> DNS
-
-&#x20;   AGENT --> PING
-
-&#x20;   AGENT --> TRACE
-
-&#x20;   AGENT --> HTTP
+   DASH --> API
 
 
 
-&#x20;   AGENT --> API
+   AGENT --> DEVICE
+
+   AGENT --> GATEWAY
+
+   AGENT --> DNS
+
+  AGENT --> PING
+
+  AGENT --> TRACE
+
+  AGENT --> HTTP
 
 
 
-&#x20;   API --> DB
+  AGENT --> API
 
 
 
-&#x20;   DB --> RULE
-
-&#x20;   DB --> ML
+   API --> DB
 
 
 
-&#x20;   RULE --> REPORT
+   DB --> RULE
 
-&#x20;   ML --> REPORT
+  DB --> ML
 
 
 
-&#x20;   REPORT --> API
+  RULE --> REPORT
 
-&#x20;   API --> DASH
+   ML --> REPORT
+
+
+
+   REPORT --> API
+
+  API --> DASH
 
 ```
 
@@ -334,7 +327,7 @@ flowchart TB
 
 
 
-\# 🔬 Diagnostic Layers
+\ Diagnostic Layers
 
 
 
@@ -348,33 +341,33 @@ flowchart LR
 
 
 
-&#x20;   A\["💻 Device"]
+  A\["💻 Device"]
 
-&#x20;   B\["📡 Router / Gateway"]
+  B\["📡 Router / Gateway"]
 
-&#x20;   C\["📶 Wi-Fi / LAN"]
+  C\["📶 Wi-Fi / LAN"]
 
-&#x20;   D\["🌐 DNS"]
+  D\["🌐 DNS"]
 
-&#x20;   E\["🏢 ISP Network"]
+   E\["🏢 ISP Network"]
 
-&#x20;   F\["🛣️ Upstream Network"]
+   F\["🛣️ Upstream Network"]
 
-&#x20;   G\["☁️ Destination"]
+  G\["☁️ Destination"]
 
 
 
-&#x20;   A --> B
+   A --> B
 
-&#x20;   B --> C
+   B --> C
 
-&#x20;   C --> D
+   C --> D
 
-&#x20;   D --> E
+   D --> E
 
-&#x20;   E --> F
+   E --> F
 
-&#x20;   F --> G
+   F --> G
 
 ```
 
@@ -388,7 +381,7 @@ The objective is to determine the \*\*first layer at which abnormal behavior app
 
 
 
-\# 🧪 Example Diagnosis
+\ Example Diagnosis
 
 
 
@@ -498,65 +491,65 @@ flowchart TD
 
 
 
-&#x20;   M\["📊 Network Measurements"]
+  M\["📊 Network Measurements"]
 
 
 
-&#x20;   F\["Feature Extraction"]
+   F\["Feature Extraction"]
 
 
 
-&#x20;   R\["Rule Engine"]
+   R\["Rule Engine"]
 
 
 
-&#x20;   B\["Historical Baseline"]
+   B\["Historical Baseline"]
 
 
 
-&#x20;   ML\["Machine Learning<br/>Anomaly Detection"]
+   ML\["Machine Learning<br/>Anomaly Detection"]
 
 
 
-&#x20;   C\["Correlation Engine"]
+   C\["Correlation Engine"]
 
 
 
-&#x20;   D\["Final Diagnosis"]
+  D\["Final Diagnosis"]
 
 
 
-&#x20;   E\["Evidence"]
+   E\["Evidence"]
 
 
 
-&#x20;   M --> F
+  M --> F
 
-&#x20;   F --> R
+   F --> R
 
-&#x20;   F --> B
+   F --> B
 
-&#x20;   F --> ML
-
-
-
-&#x20;   R --> C
-
-&#x20;   B --> C
-
-&#x20;   ML --> C
+  F --> ML
 
 
 
-&#x20;   C --> D
+   R --> C
 
-&#x20;   D --> E
+   B --> C
+
+   ML --> C
+
+
+
+   C --> D
+
+   D --> E
 
 ```
 
 
 
-\### Initial approach
+\ Initial approach
 
 
 
@@ -782,7 +775,7 @@ This provides stronger evidence of a broader network problem.
 
 
 
-\# 📊 Network Comparison
+\#  Network Comparison
 
 
 
@@ -824,7 +817,7 @@ The comparison should be performed using comparable:
 
 
 
-\# 📄 ISP Complaint Report
+\ ISP Complaint Report
 
 
 
@@ -1298,69 +1291,69 @@ flowchart LR
 
 
 
-&#x20;   P0\["Phase 0<br/>Foundation"]
+  P0\["Phase 0<br/>Foundation"]
 
-&#x20;   P1\["Phase 1<br/>Network Agent"]
+   P1\["Phase 1<br/>Network Agent"]
 
-&#x20;   P2\["Phase 2<br/>FastAPI"]
+  P2\["Phase 2<br/>FastAPI"]
 
-&#x20;   P3\["Phase 3<br/>PostgreSQL"]
+ P3\["Phase 3<br/>PostgreSQL"]
 
-&#x20;   P4\["Phase 4<br/>Agent ↔ API"]
+   P4\["Phase 4<br/>Agent ↔ API"]
 
-&#x20;   P5\["Phase 5<br/>Diagnosis Engine"]
+   P5\["Phase 5<br/>Diagnosis Engine"]
 
-&#x20;   P6\["Phase 6<br/>Dashboard"]
+   P6\["Phase 6<br/>Dashboard"]
 
-&#x20;   P7\["Phase 7<br/>Historical Baseline"]
+   P7\["Phase 7<br/>Historical Baseline"]
 
-&#x20;   P8\["Phase 8<br/>Machine Learning"]
+   P8\["Phase 8<br/>Machine Learning"]
 
-&#x20;   P9\["Phase 9<br/>Network Comparison"]
+   P9\["Phase 9<br/>Network Comparison"]
 
-&#x20;   P10\["Phase 10<br/>ISP Report"]
+  P10\["Phase 10<br/>ISP Report"]
 
-&#x20;   P11\["Phase 11<br/>Monitoring"]
+   P11\["Phase 11<br/>Monitoring"]
 
-&#x20;   P12\["Phase 12<br/>Docker"]
+   P12\["Phase 12<br/>Docker"]
 
-&#x20;   P13\["Phase 13<br/>CI/CD"]
+   P13\["Phase 13<br/>CI/CD"]
 
-&#x20;   P14\["Phase 14<br/>Deployment"]
+   P14\["Phase 14<br/>Deployment"]
 
-&#x20;   P15\["Phase 15<br/>Security + Demo"]
+   P15\["Phase 15<br/>Security + Demo"]
 
 
 
-&#x20;   P0 --> P1
+   P0 --> P1
 
-&#x20;   P1 --> P2
+   P1 --> P2
 
-&#x20;   P2 --> P3
+   P2 --> P3
 
-&#x20;   P3 --> P4
+   P3 --> P4
 
-&#x20;   P4 --> P5
+P4 --> P5
 
-&#x20;   P5 --> P6
+   P5 --> P6
 
-&#x20;   P6 --> P7
+   P6 --> P7
 
-&#x20;   P7 --> P8
+   P7 --> P8
 
-&#x20;   P8 --> P9
+  P8 --> P9
 
-&#x20;   P9 --> P10
+   P9 --> P10
 
-&#x20;   P10 --> P11
+   P10 --> P11
 
-&#x20;   P11 --> P12
+  P11 --> P12
 
-&#x20;   P12 --> P13
+   P12 --> P13
 
-&#x20;   P13 --> P14
+   P13 --> P14
 
-&#x20;   P14 --> P15
+   P14 --> P15
 
 ```
 
@@ -1370,7 +1363,7 @@ flowchart LR
 
 
 
-\# 📅 Development Philosophy
+\#  Development Philosophy
 
 
 
@@ -1588,31 +1581,31 @@ flowchart TB
 
 
 
-&#x20;   USER\["👤 User"]
+   USER\["👤 User"]
 
 
 
-&#x20;   FRONT\["Next.js"]
+   FRONT\["Next.js"]
 
 
 
-&#x20;   API\["FastAPI"]
+   API\["FastAPI"]
 
 
 
-&#x20;   DB\[("PostgreSQL")]
+   DB\[("PostgreSQL")]
 
 
 
-&#x20;   PROM\["Prometheus"]
+   PROM\["Prometheus"]
 
 
 
-&#x20;   GRAF\["Grafana"]
+   GRAF\["Grafana"]
 
 
 
-&#x20;   DOCKER\["Docker"]
+  DOCKER\["Docker"]
 
 
 
@@ -1916,7 +1909,7 @@ This project is licensed under the MIT License.
 
 
 
-\### 🩺 NetDoctor
+\NetDoctor
 
 
 
